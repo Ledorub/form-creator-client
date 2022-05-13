@@ -1,11 +1,10 @@
 from form_creator_client_app.json_rpc import JSONRPCClient
-
-API_ENDPOINT = 'http://127.0.0.1:8000/form-creator/api/form/'
+from django.conf import settings
 
 
 class API:
     def __init__(self):
-        self.client = JSONRPCClient(API_ENDPOINT)
+        self.client = JSONRPCClient(settings.API_ENDPOINT)
 
     def get_form(self, uid):
         params = {'form_uid': uid}

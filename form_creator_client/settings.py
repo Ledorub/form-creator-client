@@ -21,12 +21,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-t5kgldf8o2e0=m%yfk7e8_et=bn)&qrv=1!xuug5q3gil=ry(p'
+# SECRET_KEY = 'django-insecure-t5kgldf8o2e0=m%yfk7e8_et=bn)&qrv=1!xuug5q3gil=ry(p'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'https://form-creator-server-app.herokuapp.com',
+    'https://form-creator-client-app.herokuapp.com',
+    'http://localhost:8000',
+    'http://127.0.0.1:8000'
+]
 
 
 # Application definition
@@ -126,3 +131,10 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# app
+API_ENDPOINT = 'https://form-creator-server-app.herokuapp.com/form-creator/api/form/'
+
+import django_heroku
+django_heroku.settings(locals())
