@@ -43,12 +43,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'form_creator_client_app.apps.FormCreatorClientAppConfig'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -132,6 +134,18 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# CORS
+CORS_ALLOWED_ORIGINS = [
+    'https://form-creator-server-app.herokuapp.com',
+    'https://form-creator-client-app.herokuapp.com',
+    'http://localhost:8000',
+    'http://127.0.0.1:8000'
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://form-creator-server-app.herokuapp.com',
+    'https://form-creator-client-app.herokuapp.com'
+]
 
 # app
 API_ENDPOINT = 'https://form-creator-server-app.herokuapp.com/form-creator/api/form/'
