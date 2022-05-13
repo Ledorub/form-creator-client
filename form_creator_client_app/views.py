@@ -6,6 +6,9 @@ api = API()
 
 
 class FormView(views.View):
+    """
+    Asks API to retrieve a form, renders it and handles submission.
+    """
     template_name = 'form_creator_client_app/form.html'
 
     def dispatch(self, request, *args, **kwargs):
@@ -31,10 +34,17 @@ class FormView(views.View):
 
 
 def form_submitted_view(request, data_uid):
+    """
+    Renders data_uid from url.
+    Used as success_url.
+    """
     return HttpResponse(f'DATA_UID: {data_uid}')
 
 
 class DataView(views.View):
+    """
+    Returns all submitted data for a given form (form_uid).
+    """
     template_name = 'form_creator_client_app/data.html'
 
     def get(self, request, *args, **kwargs):

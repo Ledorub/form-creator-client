@@ -3,6 +3,9 @@ from django.conf import settings
 
 
 class API:
+    """
+    Provides methods that invoke remote API procedures.
+    """
     def __init__(self):
         self.client = JSONRPCClient(settings.API_ENDPOINT)
 
