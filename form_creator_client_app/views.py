@@ -1,6 +1,5 @@
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect, reverse, HttpResponse
 from django import views
-from form_creator_client_app.json_rpc import JSONRPCClient
 from form_creator_client_app.api import API
 
 api = API()
@@ -21,8 +20,18 @@ class FormView(views.View):
         context = api.post_form(self.form_uid, request.POST)
 
         if context['ok']:
-            return HttpResponse(context['data_uid'])
+            url_kwargs = {'data_uid': context['data_uid']}
+            return redirect(
+                reverse(
+                    'form-creator-client-app:form-submitted',
+                    kwargs=url_kwargs
+                )
+            )
         return render(request, self.template_name, context)
+
+
+def form_submitted_view(request, data_uid):
+    return HttpResponse(f'DATA_UID: {data_uid}')
 
 
 class DataView(views.View):
