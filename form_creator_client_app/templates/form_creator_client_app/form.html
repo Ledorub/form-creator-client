@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <form
+      action="{% url 'form_creator_client_app:form' form_uid=form_data.form_uid %}"
+      method="post"
+      class="form"
+  >
+    {% csrf_token %}
+    {{ form_data.form|safe }}
+    <input type="submit" value="Submit" class="form__submit-btn" />
+  </form>
+</body>
+</html>

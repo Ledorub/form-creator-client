@@ -93,7 +93,7 @@ class RPCResponse(RPCMessage):
 
 
 class JSONRPCClient:
-    JSON_RPC_VERSION = 2.0
+    JSON_RPC_VERSION = '2.0'
     request_id = 0
 
     def __init__(self, url):
@@ -102,7 +102,7 @@ class JSONRPCClient:
     def call(self, method, params):
         request = RPCRequest(
             jsonrpc=self.JSON_RPC_VERSION,
-            id=self.request_id,
+            id=str(self.request_id),
             method=method,
             params=params
         )
