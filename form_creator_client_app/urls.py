@@ -10,7 +10,7 @@ urlpatterns = [
         name='form'
     ),
     path(
-        'form-submitted/<uuid:data_uid>',
+        'form-submitted/<uuid:data_uid>/',
         views.form_submitted_view,
         name='form-submitted'
     ),
